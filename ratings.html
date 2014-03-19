@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Film Ratings App</title>
+
+    <!-- TODO: Add autocomplete search form, Image Gallery
+    
+    <!-- General metadata -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta name="description" content="description"/>
+
+    <!-- iOS and Browser Icons -->
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon"/>
+    <link rel="apple-touch-icon" sizes="57x57" href="images/icons/icon57.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="images/icons/icon72.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="images/icons/icon114.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="images/icons/icon144.png" />   
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon"/>
+
+    <!-- Typography Stylesheet -->
+    <link rel="stylesheet" href="css/type.css"/>
+
+    <!-- Foundation Stylesheet -->
+    <link rel="stylesheet" href="css/foundation.css"/>
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="css/main.css"/>
+
+  </head>
+
+  <body>
+      <div class="articleinfo">
+        <div class="container">
+          <div class="row">
+            <div class="large-8 large-centered columns">
+            <div id="film-title">
+              <ul>
+                <!-- ENTER FILM TITLE HERE -->
+                <li class="article-title">The Dark Knight</li>
+              </ul>
+            </div>
+            <div class="stars">
+              <span class="active">&#9733;</span>
+              <span class="active">&#9733;</span>
+              <span class="active">&#9733;</span>
+              <span class="active">&#9733;</span>
+              <span class="half">&#9733;</span>
+            </div>
+            <ul>
+              <li class="release-date"></li>
+              <li class="runtime"></li>
+              <li class="director"></li>
+            </ul>
+            <ul>
+              <li class="list-title">Internet Ratings</li>
+              <li class="imdb"></li>
+              <li class="metacritic"></li>
+              <li class="rottentomatoes"></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Core Javascript
+    ================================================== -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Get Internet Ratings (IMDb and Metacritic) -->
+    <script>
+
+      var title = $('#film-title').text();
+      title = title.replace(/(\r\n|\n|\r)/gm,"");
+      title = title.trim();
+      title = title.toLowerCase();
+
+      var releasedate;
+      var runtime;
+      var director;
+
+      var imdbrating;
+      var imdbID;
+
+      var metascore;
+      var metaID = title.replace(/\s+/g, '-');
+      metaID = metaID.replace(":", "");
+
+
+      $.getJSON('http://www.omdbapi.com/?t=' + title, function(data){
+
+        imdbID = data.imdbID;
+
+        imdbrating = data.imdbRating + ' | <a target="_blank" href="http://www.imdb.com/title/' + imdbID + '">IMDb</a>';
+        $('li.imdb').html(imdbrating);
+       
+        releasedate = 'Released ' + data.Released;
+        $('li.release-date').html(releasedate);
+
+        runtime = data.Runtime + 'utes';
+        $('li.runtime').html(runtime);
+
+        director = 'Directed by ' + data.Director;
+        $('li.director').html(director);
+
+        metascore = data.Metascore + ' | <a target="_blank" href="http://www.metacritic.com/movie/' + metaID + '">Metacritic</a>';
+        $('li.metacritic').html(metascore);
+      });
+
+    </script>
+
+    <!-- Get Internet Ratings (Rotten Tomatoes) -->
+    <script>
+        var title = $('#film-title').text();
+        title = title.replace(/(\r\n|\n|\r)/gm,"");
+        title = title.trim();
+        title = title.toLowerCase();
+
+        var apikey = "2s8722x6np3thb7jvsejuyuq";
+        var baseUrl = "http://api.rottentomatoes.com/api/public/v1.0";
+
+        // construct the uri with our apikey
+        var moviesSearchUrl = baseUrl + '/movies.json?apikey=' + apikey;
+        var query = title;
+        var rottentomatoes;
+        var tomatoID;
+
+        $(document).ready(function() {
+
+          // send off the query
+          $.ajax({
+            url: moviesSearchUrl + '&q=' + encodeURI(query) + '&page_limit=1',
+            dataType: "jsonp",
+            success: searchCallback
+          });
+        });
+
+        // callback for when we get back the results
+        function searchCallback(data) {
+         var movies = data.movies;
+         $.each(movies, function(index, movie) {
+            tomatoID = movie.links.alternate;
+            rottentomatoes = movie.ratings.critics_score + ' | <a target="_blank" href="' + tomatoID + '">Rotten Tomatoes</a>';
+            $('li.rottentomatoes').html(rottentomatoes);
+         });
+        }
+    </script>
+
+  </body>
+</html>

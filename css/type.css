@@ -1,0 +1,380 @@
+/*-- TYPOGRAPHIC STYLES --*/
+
+/*-- Eric Meyer's Reset CSS v2.0 - http://cssreset.com --*/
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}table{border-collapse:collapse;border-spacing:0}
+
+/*-- Import Fonts --*/
+
+@font-face{
+	font-family:"Socials";
+	src: url('../fonts/entypo-social.ttf');
+}
+
+@font-face{
+	font-family:"Entypo";
+	src: url('../fonts/entypo.ttf');
+}
+
+@font-face {
+  font-family:"Neutra";
+  src: url('../fonts/NeutraText-Book.ttf');
+}
+
+@font-face {
+	font-family:"Neutra";
+	font-weight: bold;
+	src: url('../fonts/NeutraText-Bold.ttf');
+}
+
+/**
+ *
+ * =======================================================================
+	 Base Type
+ * =======================================================================
+ *
+ */
+
+html{
+	height:100%;
+	font: normal 125.0%/1.85 serif; /* base font size 18px with 1.65 line-height */
+}
+
+body{
+	padding: 0;
+	border: 0;
+	-webkit-hyphens: auto;
+	-moz-hyphens: auto;
+	-ms-hyphens: auto;
+	-o-hyphens: auto;
+	hyphens: auto;
+	word-wrap: break-word;
+	color: #444444;
+	background-color:#f2f2f2;
+    -webkit-font-smoothing: antialiased; /* Fix for webkit rendering */
+	-webkit-text-size-adjust: none;
+}
+
+.clear-top{
+	height:50px;
+	clear:both;
+	float:none;
+	width:100%;
+}
+
+.clear-row{
+	height:25px;
+	clear:both;
+	float:none;
+	width:100%;
+}
+
+/**
+ *
+ * =======================================================================
+	 Fine Print
+ * =======================================================================
+ */
+
+small {
+	font-size: 65%;
+}
+
+/**
+ *
+ * =======================================================================
+	 Headings
+ * =======================================================================
+ */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	line-height: 1;
+	margin-top: 1;
+	text-rendering: optimizeLegibility; /*  voodoo to enable ligatures and kerning | https://developer.mozilla.org/en-US/docs/CSS/text-rendering */
+	color: #222222;
+	font-family:"Neutra", sans-serif;
+	font-weight:bold;
+	text-transform:uppercase;
+}
+
+h1{
+	font-size: 60px;
+	font-size: 3.33333rem; /* 60 / 18 = 3.3333 */
+	margin-bottom: 0.2475em;
+	margin-top: 0.2475em;
+}
+
+h2{
+	font-size: 48px;
+	font-size: 2.6667rem; /* 48 / 18 = 2.6667 */
+	margin-bottom: 1.2375rem;
+	margin-top: 1.2375rem;
+}
+
+h3{
+	font-size: 36px;
+	font-size: 2rem; /* 36 / 18 = 2 */
+	margin-bottom: 0.4125em;
+	margin-top: 0.4125em;
+}
+
+h4{
+	font-size: 28px;
+	font-size: 1.4rem; /* 24 / 18 = 1.3333 */
+	margin-bottom: .61875em;
+	margin-top: .61875em;
+}
+
+h5{
+	font-size: 21px;
+	font-size: 1.16667rem; /* 21 / 18 = 1.1667 */
+	margin-bottom: 1.4142857142857141em; /* measure( base font-size(18) * base line-height(1.65) ) / current font-size(21) = margin-bottom(1.4142857142857141) */
+}
+
+h6{
+	font-size: 18px;
+	font-size: 1rem; /* 18 = 18 × 1 */
+	margin-bottom: 1.65em; /* measure( base font-size(18) * base line-height(1.65) ) / current font-size(18) = margin-bottom(1.65) */
+}
+
+/**
+ *
+ * =======================================================================
+	 Paragraphs and Indentation
+ * =======================================================================
+ */
+
+p {
+	margin: auto auto 1.5em; /* bottom margin for paragraphs */
+	line-height:1.8em;
+	font-family:Georgia, serif;
+}
+
+p + p {
+	margin-top: 1em; /* no top margin on subsequent paragraphs */
+}
+
+em, i{
+	font-style:italic;
+	font-size:0.8em;
+}
+
+strong, b{
+	font-weight:bold;
+}
+
+a{
+	color:#444444;
+	text-decoration:none;
+	font-weight:bold;
+	-webkit-transition: color 300ms ease-out;
+  	-moz-transition: color 300ms ease-out;
+  	transition: color 300ms ease-out;
+}
+
+a:hover{
+	color:#c29d52;
+}
+
+a.continue{
+	font-family:"Neutra";
+	text-transform: uppercase;
+}
+
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a{
+	color:#222222;
+}
+
+/**
+ *
+ * =======================================================================
+	 Horizontal Rule Style
+ * =======================================================================
+ */
+
+hr{
+	border:none;
+    height: 1px;
+    background:#999;
+    clear:both;
+    float:none;
+}
+
+/**
+ *
+ * =======================================================================
+ * Drop Capitals:
+ * Extend this object into your markup.
+
+	 <p class="drop-cap">What a wonderful day it is out there wouldn't you'd say?</p>
+
+	* =======================================================================
+ */
+
+.drop-cap:first-letter {
+	float: left;
+	margin: 12px .07em auto auto;
+	padding: 0;
+	font-size: 3.4em;
+	font-family: inherit;
+	line-height: 0.8;
+	text-indent: 0;
+	background: transparent;
+	color: inherit;
+}
+
+p + .drop-cap {
+	text-indent: 0;
+	margin-top: 0;
+}
+
+@media only screen and (max-width: 480px) {
+	p {
+		font-size:0.9em;
+		margin: auto auto 1.5em; /* bottom margin for paragraphs */
+		line-height:1.6em;
+		font-family:Georgia, serif;
+	}
+	.drop-cap:first-letter {
+		margin: 9px .07em auto auto;
+		font-size: 3em;
+		line-height: 0.8;
+	}
+}
+
+/**
+ *
+ * =======================================================================
+	 Hyphens
+ * =======================================================================
+ */
+
+abbr,
+acronym,
+blockquote,
+code,
+dir,
+kbd,
+listing,
+plaintext,
+q,
+samp,
+tt,
+var,
+xmp {
+	/* Accepted values: [ none | manual | auto ] */ /* http://meyerweb.com/eric/thoughts/2012/12/17/where-to-avoid-css-hyphenation */
+	-webkit-hyphens: none; /* Safari 5.1 thru 6, iOS 4.2 thru 6 */
+	-moz-hyphens: none; /* Firefox 16 thru 20 */
+	-ms-hyphens: none; /* IE10 */
+	-o-hyphens: none; /* PRESTO...haha LOL */
+	hyphens: none;	 /* W3C standard */
+}
+
+/**
+ *
+ * =======================================================================
+	 Blockquotes
+ * =======================================================================
+ */
+
+/**
+ * Blockquote Markup
+ *
+	<figure>
+		<blockquote class="blockquote" cite="">
+			<p></p>
+		</blockquote>
+		<figcaption>
+			<cite>
+				<small><a href=""></a></small>
+			</cite>
+		</figcaption>
+	</figure>
+ *
+ * Extend this object into your markup.
+ *
+ */
+
+.blockquote p:last-of-type {
+	margin-bottom: -0.825em;
+	font-style:italic;
+}
+
+.blockquote + figcaption {
+	display: block;
+	font-size: inherit;
+	text-align: right;
+}
+
+.blockquote + figcaption:before {
+	content: "-"; /* "-" is your citation flourish */
+}
+
+/**
+ *
+ * =======================================================================
+	 Pull Quotes
+ * =======================================================================
+ */
+
+/**
+ * Pull Quotes Markup
+ *
+	<aside class="pull-quote">
+		<blockquote>
+			<p></p>
+		</blockquote>
+	</aside>
+ *
+ * Extend this object into your custom stylesheet.
+ *
+ */
+.pull-quote {
+	position: relative;
+	padding: 1em;
+}
+.pull-quote figcaption {
+	display: block;
+	font-size: inherit;
+	text-align: center;
+	margin-top:-20px;
+	font-family:"Neutra";
+	text-transform:uppercase;
+}
+
+.pull-quote blockquote p{
+	font-style: italic;
+}
+
+.pull-quote figcaption:before {
+	content: "—"; /* "-" is your citation flourish */
+}
+
+@media only screen and (max-width: 1024px) {
+	.pull-quote figcaption {
+		text-align: left;
+	}
+}
+
+.pull-quote:before,
+.pull-quote:after {
+	height: 1em;
+	opacity: 0.15;
+	position: absolute;
+	font-size: 4em;
+	color: #222222;
+}
+.pull-quote:before {
+	content: '“';
+	top: 0;
+	left: 0;
+}
+.pull-quote:after {
+	content: '”';
+	bottom: 0;
+	right: 0;
+}
